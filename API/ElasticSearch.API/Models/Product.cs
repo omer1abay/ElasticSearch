@@ -6,7 +6,8 @@ namespace ElasticSearch.API.Models
     public class Product
     {
 
-        [PropertyName("_id")] //ES'de id değeri farklı tutulduğu için bu şekilde belirtmemiz gerekiyor id değeri metadata'da tutulur bunu belirtmezsek düz bir property'i olarak algılanır. _id ES'deki isimlendirmedir kafamızdan belirlemedik.
+
+        //[PropertyName("_id")] //Elastic.Clients kütüphanesi ile artık belirtmemize gerek yoktur. //ES'de id değeri farklı tutulduğu için bu şekilde belirtmemiz gerekiyor id değeri metadata'da tutulur bunu belirtmezsek düz bir property'i olarak algılanır. _id ES'deki isimlendirmedir kafamızdan belirlemedik.
         public string Id { get; set; } = null!;
         public string Name { get; set; } = null!;
         public decimal Price { get; set; }
@@ -23,7 +24,7 @@ namespace ElasticSearch.API.Models
             if (Feature == null) //fast fail
                 return new ProductDto(Id : Id, Name : Name, Price : Price, Stock : Stock, Feature : null);
 
-            return new ProductDto(Id: Id, Name: Name, Price: Price, Stock: Stock, Feature: new ProductFeatureDto(Feature.Width, Feature.Height, Feature.Color));
+            return new ProductDto(Id: Id, Name: Name, Price: Price, Stock: Stock, Feature: new ProductFeatureDto(Feature.Width, Feature.Height, Feature.Color.ToString()));
 
         }
 
