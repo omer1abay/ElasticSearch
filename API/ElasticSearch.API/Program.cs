@@ -20,6 +20,7 @@ builder.Services.AddElasticClient(builder.Configuration);
 //DB'ye baðlanmayan Helper sýnýflarý singleton olabilir
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<ECommerceRepository>();
 
 //DI Container -> SOLID ve IoC prensiplerini uygulamamýzý saðlar
 // ! ? iþaretleri sadece compiler içindir runtime'a bir etkileri yoktur. Nullable özelliði kapatmak nullable olabilecek yerleri tespit etmek için saðlýklý deðildir.
